@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "parcel index.html",
-    "build": "parcel build --public-url . index.html"
+    "build": "parcel build --public-url . index.html",
+    "postbuild": "cp postcodes.kml data.json favicon.ico dist/"
   },
   "author": "",
   "license": "BSD",
