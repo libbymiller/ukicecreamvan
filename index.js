@@ -8,30 +8,12 @@ import VectorLayer from 'ol/layer/Vector';
 import KML from 'ol/format/KML';
 import {Circle as CircleStyle, Fill, Stroke, Style, Text} from 'ol/style';
 
-const postcode_data = {
-  "BS6":"Greensleeves",
-  "SM1":"Teddy Bears' Picnic",
-  "GU7": "Colonel Bogey",
-  "CV1": "Cornetto song",
-  "NW1": "Football Crazy",
-  "SE16": "Yankee Doodle Dandy",
-  "BS41": "Cornetto song, Greensleeves",
-  "BS2": "Match of the Day",
-  "WA14": "You are my sunshine",
-  "BA2": "Cornetto song",
-  "DA18": "Yankee Doodle Dandy",
-  "BS3": "Cornetto song",
-  "NE24": "Nelly the Elephant",
-  "BS3": "Greensleeves",
-  "SL7": "Teddy Bears' Picnic",
-  "OL9": "Teddy Bears' Picnic, Greensleeves",
-  "BL1": "Match of the day",
-  "BS32": "Batman",
-  "N22": "Yankee Doodle Dandy",
-  "S1": "The Good The Bad The Ugly",
-  "BS3": "A Team"
-}
+let postcode_data = null;
+const url = "./data.json";
 
+fetch(url)
+  .then(response => response.json())
+  .then(data => postcode_data = data);
 
 var styleCache = {};
 
@@ -40,7 +22,6 @@ var styleFunction = function (feature) {
   var p = postcode_data[name];
   var colour;
   if(p){
-    console.log(p);
     colour = 'rgba(0, 0, 255, 1)';
   }
 
